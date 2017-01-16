@@ -35,8 +35,8 @@
       "LISTENING_PORT"  : "30303",
       "INSTANCE_NAME"   : "",
       "CONTACT_DETAILS" : "",
-      "WS_SERVER"       : "wss://rpc.ethstats.net",
-      "WS_SECRET"       : "see http://forum.ethereum.org/discussion/2112/how-to-add-yourself-to-the-stats-dashboard-its-not-automatic",
+      "WS_SERVER"       : "ws://192.168.0.88:3000",
+      "WS_SECRET"       : "electron",
       "VERBOSITY"       : 2
     }
   }
