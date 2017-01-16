@@ -1,0 +1,43 @@
+[
+  {
+    "name"              : "eth",
+    "cwd"               : "/var/log/eth-netstats/",
+    "script"            : "bin/eth.sh",
+    "args"              : "ethpassword",
+    "log_date_format"   : "YYYY-MM-DD HH:mm Z",
+    "log_file"          : "/var/log/eth-netstats/eth-log.log",
+    "out_file"          : "/var/log/eth-netstats/eth-out.log",
+    "error_file"        : "/var/log/eth-netstats/eth-err.log",
+    "merge_logs"        : false,
+    "watch"             : false,
+    "max_restarts"      : 10,
+    "exec_interpreter"  : "bash",
+    "exec_mode"         : "fork_mode"
+  },
+  {
+    "name"              : "node-app",
+    "cwd"               : "/var/log/eth-netstats/",
+    "script"            : "app.js",
+    "log_date_format"   : "YYYY-MM-DD HH:mm Z",
+    "log_file"          : "/var/log/eth-netstats/node-app-log.log",
+    "out_file"          : "/var/log/eth-netstats/node-app-out.log",
+    "error_file"        : "/var/log/eth-netstats/node-app-err.log",
+    "merge_logs"        : false,
+    "watch"             : false,
+    "max_restarts"      : 10,
+    "exec_interpreter"  : "node",
+    "exec_mode"         : "fork_mode",
+    "env":
+    {
+      "NODE_ENV"        : "production",
+      "RPC_HOST"        : "localhost",
+      "RPC_PORT"        : "8545",
+      "LISTENING_PORT"  : "30303",
+      "INSTANCE_NAME"   : "",
+      "CONTACT_DETAILS" : "",
+      "WS_SERVER"       : "wss://rpc.ethstats.net",
+      "WS_SECRET"       : "see http://forum.ethereum.org/discussion/2112/how-to-add-yourself-to-the-stats-dashboard-its-not-automatic",
+      "VERBOSITY"       : 2
+    }
+  }
+]
