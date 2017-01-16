@@ -3,8 +3,8 @@
 ### server
 ...
 
-### clientcmds_eth-intelligence-api
-
+### client eth-net-intelligence-api
+clone, install dependencies, make log folder, user writable
 ```
 git clone https://github.com/BSDStudios/eth-net-intelligence-api
 cd eth-net-intelligence-api/
