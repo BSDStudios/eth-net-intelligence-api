@@ -18,6 +18,8 @@ choose port and shared secret:
 export PORT=3000; export WS_SECRET=electron; npm start
 ```
 
+Open webpage http://localhost:3000
+
 ### client eth-net-intelligence-api
 On each client `parity` (or `geth` or `eth`), and `node`, and `npm` must be installed. Then clone repo, npm install, install pm2, and create a user writable /log/ folder:
 
@@ -39,15 +41,18 @@ nano p.json
 pm2 start p.json 
 ```
 
-Kill all pm2:
-```
-pm2 kill
-```
+Reload webpage http://localhost:3000  
 
-Log files are in:
+
+If INSTANCE_NAME does not show up, check log files in:
 
 ```
 ls /var/log/eth-netstats
+```
+
+Kill all pm2:
+```
+pm2 kill
 ```
 
 
