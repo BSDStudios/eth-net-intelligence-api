@@ -18,8 +18,9 @@ mkdir /var/log/eth-netstats; U=$USER; sudo chown $U:$U /var/log/eth-netstats
 edit WS_SERVER and WS_SECRET, then start via pm2
 
 ```
-nano processes.json 
-pm2 start processes.json 
+cp processes.json p.json
+nano p.json 
+pm2 start p.json 
 ```
 
 kill all pm2:
