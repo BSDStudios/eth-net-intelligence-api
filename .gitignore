@@ -8,4 +8,5 @@ config.js
 *.swp
 *.pem
 .node-xmlhttprequest-*
-p.json
+log/*.log
+a.json
