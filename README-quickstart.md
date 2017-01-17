@@ -18,11 +18,11 @@ choose port and shared secret:
 export PORT=3000; export WS_SECRET=electron; npm start
 ```
 
-Open webpage http://localhost:3000
+Open webpage [http://localhost:3000](http://localhost:3000)
 
 ### client eth-net-intelligence-api
 On each client `parity` (or `geth` or `eth`), and `node`, and `npm` must be installed.  
-Ideally, also
+Ideally, to query if node already running, also
 
     sudo apt-get install curl jq
 
@@ -50,7 +50,7 @@ Edit WS_SERVER and WS_SECRET and INSTANCE_NAME, then start client via pm2
     nano a.json 
     pm2 start a.json 
 
-Reload webpage http://localhost:3000  
+Reload webpage [http://localhost:3000](http://localhost:3000)  
 
 
 If INSTANCE_NAME does not show up, check log files in `log/` folder.
