@@ -21,7 +21,12 @@ export PORT=3000; export WS_SECRET=electron; npm start
 Open webpage http://localhost:3000
 
 ### client eth-net-intelligence-api
-On each client `parity` (or `geth` or `eth`), and `node`, and `npm` must be installed. Then clone repo, npm install, install pm2:
+On each client `parity` (or `geth` or `eth`), and `node`, and `npm` must be installed.  
+Ideally, also
+
+    sudo apt-get install curl jq
+
+Then clone repo, npm install, install pm2:
 
 ```
 git clone https://github.com/BSDStudios/eth-net-intelligence-api
@@ -29,9 +34,11 @@ cd eth-net-intelligence-api/
 
 npm install
 sudo npm i -g pm2
+``` 
 
-cp app.json a.json
-```
+and create your own settings file from the examples
+
+    cp app.json a.json
 
 or
 

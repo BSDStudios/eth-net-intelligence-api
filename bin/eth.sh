@@ -16,21 +16,38 @@ fi
 echo "Local IP: $LOCALIP"
 echo "Public IP: $IP"
 
-# TODO: check before if already running:
-# curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"web3_clientVersion","id":1}' http://127.0.0.1:8545
+
+# is Ethereum already running, with open RPC port?
+QUERY='{"jsonrpc":"2.0","method":"web3_clientVersion","id":1}'
+CHECKHOST=127.0.0.1
+CHECKPORT=8545
+
+if [[ -f $(which curl 2>/dev/null) ]]
+then
+	JSONRPC=$(curl -s -f -X POST -H "Content-Type: application/json" --data $QUERY http://$CHECKHOST:$CHECKPORT)
+	ETHEREUMNODE=$(echo $JSONRPC | jq -r '.result') || ETHEREUMNODE=$JSONRPC
+else
+	ETHEREUMNODE=
+fi
+
+if [ -n "$ETHEREUMNODE" ] 
+then
+	echo Running node:  $ETHEREUMNODE
+else
+	echo No running node, or curl not installed.
 
 if [[ -f $(which parity 2>/dev/null) ]]
 then
 	echo "Starting parity"
-	CMD="parity --bootnodes enode://09fbeec0d047e9a37e63f60f8618aa9df0e49271f3fadb2c070dc09e2099b95827b63a8b837c6fd01d0802d457dd83e3bd48bd3e6509f8209ed90dabbc30e3d3@52.16.188.185:30303 --nat \"extip:$IP\""
+	CMD="parity --bootnodes $BOOTNODE --nat \"extip:$IP\" $PARITYARGS"
 	echo $CMD
 	$CMD
 
 elif [[ -f $(which geth 2>/dev/null) ]]
 then
 	echo "Starting geth"
-	echo geth --rpc --bootnodes "enode://09fbeec0d047e9a37e63f60f8618aa9df0e49271f3fadb2c070dc09e2099b95827b63a8b837c6fd01d0802d457dd83e3bd48bd3e6509f8209ed90dabbc30e3d3@52.16.188.185:30303" --nat "extip:$IP"
-	geth --rpc --bootnodes "enode://09fbeec0d047e9a37e63f60f8618aa9df0e49271f3fadb2c070dc09e2099b95827b63a8b837c6fd01d0802d457dd83e3bd48bd3e6509f8209ed90dabbc30e3d3@52.16.188.185:30303" --nat "extip:$IP"
+	echo geth --rpc --bootnodes $BOOTNODE --nat "extip:$IP" 
+	geth --rpc --bootnodes $BOOTNODE --nat "extip:$IP"
 
 elif [[ -f $(which eth 2>/dev/null) ]]
 then
@@ -42,3 +59,5 @@ else
 	echo "Ethereum was not found!"
 	exit 1;
 fi
+
+fi # [ -n "$ETHEREUMNODE" ] 
