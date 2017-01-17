@@ -60,4 +60,9 @@ Kill all pm2:
 pm2 kill
 ```
 
+#### TODO
+* `bin/eth.sh` has additional PARITYARGS options for `parity`, not yet for `geth` or `eth`. And the `eth --remote` IP is still hardcoded.
+* `bin/build.sh` and `bin/update.sh` are designed to work on Ubuntu, not e.g. Debian. 
+* `bin/build.sh`  by default uses processes-ec2.json, not app.json or app-and-eth.json.
+* `bin/update.sh` yet only updates `geth` or `eth` not `parity` yet. Plus, the repo folders are hardcoded.
 

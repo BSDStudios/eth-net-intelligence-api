@@ -39,15 +39,15 @@ else
 if [[ -f $(which parity 2>/dev/null) ]]
 then
 	echo "Starting parity"
-	CMD="parity --bootnodes $BOOTNODE --nat \"extip:$IP\" $PARITYARGS"
+	CMD="parity $BOOTNODESARG --nat \"extip:$IP\" $PARITYARGS"
 	echo $CMD
 	$CMD
 
 elif [[ -f $(which geth 2>/dev/null) ]]
 then
 	echo "Starting geth"
-	echo geth --rpc --bootnodes $BOOTNODE --nat "extip:$IP" 
-	geth --rpc --bootnodes $BOOTNODE --nat "extip:$IP"
+	echo geth $BOOTNODESARG --rpc --nat "extip:$IP" 
+	geth $BOOTNODESARG --rpc --nat "extip:$IP" 
 
 elif [[ -f $(which eth 2>/dev/null) ]]
 then
